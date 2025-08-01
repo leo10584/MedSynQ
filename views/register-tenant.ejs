@@ -1,0 +1,21 @@
+<%- include('partials/header', { title: 'Create Organisation - MedSynQ', user: user, tenantName: tenantName, error: error }) %>
+
+<h2>Create Organisation</h2>
+<p>Create a new organisation in MedSynQ. You'll become the administrator for this tenant.</p>
+<form action="/register-tenant" method="post" class="form">
+  <label for="tenantName">Organisation Name</label>
+  <input type="text" id="tenantName" name="tenantName" required>
+
+  <label for="adminName">Admin Name</label>
+  <input type="text" id="adminName" name="adminName" required>
+
+  <label for="adminEmail">Admin Email</label>
+  <input type="email" id="adminEmail" name="adminEmail" required>
+
+  <label for="adminPassword">Password</label>
+  <input type="password" id="adminPassword" name="adminPassword" required>
+
+  <button type="submit" class="btn">Create Organisation</button>
+</form>
+
+<%- include('partials/footer') %>

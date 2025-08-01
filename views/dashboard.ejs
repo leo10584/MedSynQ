@@ -1,0 +1,30 @@
+<%- include('partials/header', { title: 'Dashboard - MedSynQ', user: user, tenantName: tenantName, error: null }) %>
+
+<h2>Dashboard</h2>
+<p>Welcome, <%= user.name %>! Here are your patients:</p>
+
+<% if (patients.length === 0) { %>
+  <p>No patients yet. <a href="/patients/new?tenant=<%= tenantName %>">Add your first patient</a>.</p>
+<% } else { %>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Date of Birth</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% patients.forEach(patient => { %>
+        <tr>
+          <td><%= patient.name %></td>
+          <td><%= patient.date_of_birth || '-' %></td>
+          <td><%= patient.notes || '-' %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+  <p><a class="btn" href="/patients/new?tenant=<%= tenantName %>">Add Another Patient</a></p>
+<% } %>
+
+<%- include('partials/footer') %>

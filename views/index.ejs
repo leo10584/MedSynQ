@@ -1,0 +1,12 @@
+<%- include('partials/header', { title: 'Welcome to MedSynQ', user: session && session.user, tenantName: session && session.tenantName, error: error }) %>
+
+<section class="hero">
+  <h2>Welcome to MedSynQ</h2>
+  <p>MedSynQ is a multi‑tenant SaaS platform designed to synchronise healthcare workflows across clinics and organisations. Create your own organisation or log in to an existing one to get started.</p>
+  <div class="cta-buttons">
+    <a class="btn" href="/register-tenant">Create Organisation</a>
+    <a class="btn secondary" href="/login">Log In</a>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

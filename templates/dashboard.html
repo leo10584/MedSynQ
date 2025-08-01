@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard - MedSynQ{% endblock %}
+{% block content %}
+<h2>Dashboard</h2>
+<p>Welcome, {{ user.user_name }}! Here are your patients:</p>
+{% if patients|length == 0 %}
+  <p>No patients yet. <a href="/patients/new">Add your first patient</a>.</p>
+{% else %}
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Date of Birth</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for p in patients %}
+      <tr>
+        <td>{{ p.name }}</td>
+        <td>{{ p.date_of_birth if p.date_of_birth else '-' }}</td>
+        <td>{{ p.notes if p.notes else '-' }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <p><a class="btn" href="/patients/new">Add Another Patient</a></p>
+{% endif %}
+{% endblock %}

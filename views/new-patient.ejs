@@ -1,0 +1,17 @@
+<%- include('partials/header', { title: 'Add Patient - MedSynQ', user: user, tenantName: tenantName, error: error }) %>
+
+<h2>Add Patient</h2>
+<form action="/patients/new" method="post" class="form">
+  <label for="name">Patient Name</label>
+  <input type="text" id="name" name="name" required>
+
+  <label for="dob">Date of Birth</label>
+  <input type="date" id="dob" name="date_of_birth">
+
+  <label for="notes">Notes</label>
+  <textarea id="notes" name="notes" rows="4"></textarea>
+
+  <button type="submit" class="btn">Add Patient</button>
+</form>
+
+<%- include('partials/footer') %>

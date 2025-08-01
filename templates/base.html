@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="/public/favicon.png">
+  <link rel="stylesheet" href="/public/styles.css">
+  <title>{% block title %}MedSynQ{% endblock %}</title>
+</head>
+<body>
+  <header class="header">
+    <div class="logo-container">
+      <img src="/public/images/logo.png" alt="MedSynQ logo" class="logo">
+      <div class="branding">
+        <h1>MedSynQ</h1>
+        <p class="tagline">Synchronise care across organisations</p>
+      </div>
+    </div>
+    <nav>
+      {% if user %}
+        <span class="welcome">Hi, {{ user.user_name }} ({{ user.tenant_name }})</span>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/patients/new">Add Patient</a>
+        <a href="/logout">Logout</a>
+      {% else %}
+        <a href="/">Home</a>
+        <a href="/register-tenant">Sign Up</a>
+        <a href="/login">Login</a>
+      {% endif %}
+    </nav>
+  </header>
+  {% if error %}
+    <div class="error">{{ error }}</div>
+  {% endif %}
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+  <footer>
+    <p>&copy; {{ 2025 }} MedSynQ. All rights reserved.</p>
+  </footer>
+</body>
+</html>

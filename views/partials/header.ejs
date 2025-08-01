@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="stylesheet" href="/styles.css">
+  <title><%= typeof title !== 'undefined' ? title : 'MedSynQ' %></title>
+</head>
+<body>
+  <header class="header">
+    <div class="logo-container">
+      <img src="/images/logo.png" alt="MedSynQ logo" class="logo">
+      <div class="branding">
+        <h1>MedSynQ</h1>
+        <p class="tagline">Synchronise care across organisations</p>
+      </div>
+    </div>
+    <nav>
+      <% if (typeof user !== 'undefined' && user) { %>
+        <span class="welcome">Hi, <%= user.name %> (<%= tenantName %>)</span>
+        <a href="/dashboard?tenant=<%= tenantName %>">Dashboard</a>
+        <a href="/patients/new?tenant=<%= tenantName %>">Add Patient</a>
+        <a href="/logout">Logout</a>
+      <% } else { %>
+        <a href="/">Home</a>
+        <a href="/register-tenant">Sign Up</a>
+        <a href="/login">Login</a>
+      <% } %>
+    </nav>
+  </header>
+  <% if (error) { %>
+    <div class="error"><%= error %></div>
+  <% } %>
